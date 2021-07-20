@@ -1,0 +1,23 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  my-service:
+    image: kennethreitz/httpbin
+    # restart: always
+    environment:
+      DEMO_ENV: 'Hello World'
+    ports:
+      - "9999:80"
+    networks:
+      - my-network
+
+  my-client:
+    image: my-container
+    # restart: always
+    networks:
+     - my-network
+
+networks:
+ my-network:
